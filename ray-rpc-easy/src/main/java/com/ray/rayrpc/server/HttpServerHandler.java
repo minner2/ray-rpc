@@ -36,7 +36,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            RpcResponse rpcResponse = null;
+            RpcResponse rpcResponse = new RpcResponse();
             if(Objects.isNull(rpcRequest)){
                 rpcResponse.setMessage("rpcRequest is null");
                 rpcResponse.setData(null);
@@ -69,7 +69,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     public void doResponse(HttpServerRequest httpServerRequest,RpcResponse rpcResponse,Serializer serializer){
         HttpServerResponse response = httpServerRequest.response().putHeader("Content-type","application/json");
         try {
-            byte[] bytes = serializer.serialize(rpcResponse.getData());
+            byte[] bytes = serializer.serialize(rpcResponse);
             response.end(Buffer.buffer(bytes));
         } catch (Exception e) {
             e.printStackTrace();

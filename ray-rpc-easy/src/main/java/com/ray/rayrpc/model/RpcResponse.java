@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @Author: RayMind
  * @Date: 2024/5/26 12:12
@@ -14,8 +16,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RpcResponse {
-
+public class RpcResponse implements Serializable {
+    private static final long serialVersionUID = -3051455687214833230L;
     /**
      * 相应数据
      */

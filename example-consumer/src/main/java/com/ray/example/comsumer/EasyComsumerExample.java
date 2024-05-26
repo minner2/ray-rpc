@@ -14,10 +14,10 @@ import java.util.Objects;
 public class EasyComsumerExample {
 
     public static void main(String[] args) {
-        UserService userService = null;
         User user = new User();
+        UserServiceProxy userServiceProxy = new UserServiceProxy();
         user.setName("ray");
-        User newUser = userService.getUser(user);
+        User newUser = userServiceProxy.getUser(user);
         if(Objects.nonNull(newUser)){
             System.out.println(newUser.getName());
         }else{
