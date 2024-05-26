@@ -2,6 +2,7 @@ package com.ray.example.comsumer;
 
 import com.ray.common.model.User;
 import com.ray.common.service.UserService;
+import com.ray.rayrpc.proxy.ServiceProxyFactory;
 import com.ray.rayrpc.registry.LocalRegistry;
 
 import java.util.Objects;
@@ -15,9 +16,10 @@ public class EasyComsumerExample {
 
     public static void main(String[] args) {
         User user = new User();
-        UserServiceProxy userServiceProxy = new UserServiceProxy();
+//        UserServiceProxy userServiceProxy = new UserServiceProxy();
+        UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         user.setName("ray");
-        User newUser = userServiceProxy.getUser(user);
+        User newUser = userService.getUser(user);
         if(Objects.nonNull(newUser)){
             System.out.println(newUser.getName());
         }else{
